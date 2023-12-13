@@ -1,0 +1,5 @@
+{
+   "itemGroup.gothicrunes.runes_item_group": "Gothic Runes",
+   "item.gothicrunes.rune_fire_arrow": "Fire Arrow Rune",
+   "death.attack.fire_rune": "%1$s died from a custom damage type!" 
+}
