@@ -7,16 +7,15 @@ import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageSources;
+import net.minecraft.entity.damage.DamageType;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemStackSet;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
@@ -64,7 +63,9 @@ public class FireArrowEntity extends ThrownItemEntity {
         Entity entity = entityHitResult.getEntity(); // sets a new Entity instance as the EntityHitResult (victim)
         if(entity instanceof  LivingEntity livingEntity){
             livingEntity.setOnFireFor(1);
-            livingEntity.damage(CustomDamageTypes.of(this.getWorld(),CustomDamageTypes.TEST_DAMAGE_TYPE),4.0f);
+            livingEntity.damage(getDamageSources().onFire(),4f);
+            //livingEntity.damage(getDamageSources().magic(),4f);
+            //livingEntity.damage(CustomDamageTypes.of(this.getWorld(),CustomDamageTypes.GOTHIC_FIRE_DAMAGE),4.0f);
         }
     }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gothicrunes:item/rune_small_lightning"
+  }
+}
