@@ -12,6 +12,7 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemStackSet;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
@@ -27,16 +28,16 @@ public class FireArrowEntity extends ThrownItemEntity {
     }
 
     public FireArrowEntity(World world, LivingEntity owner) {
-        super(GothicRunesFabric.FireArrowEntityType, owner, world); // null will be changed later
+        super(GothicRunesFabric.FireArrowEntityType, owner, world);
     }
 
     public FireArrowEntity(World world, double x, double y, double z) {
-        super(GothicRunesFabric.FireArrowEntityType, x, y, z, world); // null will be changed later
+        super(GothicRunesFabric.FireArrowEntityType, x, y, z, world);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return null;
+        return Items.FIRE_CHARGE.asItem();
     }
 
     @Environment(EnvType.CLIENT)

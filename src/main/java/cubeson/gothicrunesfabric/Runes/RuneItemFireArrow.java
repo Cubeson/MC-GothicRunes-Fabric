@@ -22,15 +22,17 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class RuneItemFireArrow extends RuneItem{
+
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if(!hand.equals(Hand.MAIN_HAND)) return super.use(world, user, hand);
 
+        user.getItemCooldownManager().set(this, 10);
         ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.NEUTRAL, 0.5F, 1F);
-        user.damage(CustomDamageTypes.of(world, CustomDamageTypes.TEST_DAMAGE_TYPE), 4.0f);
         FireArrowEntity fireArrowEntity = new FireArrowEntity(world, user);
-        fireArrowEntity.setItem(itemStack);
+        //fireArrowEntity.setItem(itemStack);
         fireArrowEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0f, 2f, 0.1f);
         world.spawnEntity(fireArrowEntity);
         user.incrementStat(Stats.USED.getOrCreateStat(this));
